@@ -1,0 +1,71 @@
+keytool -genkey -v -keystore \home\dev-128\flutterproject\novoapp\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+Enter keystore password:******  
+Re-enter new password:******
+What is your first and last name?
+  [Unknown]:  flattrade
+What is the name of your organizational unit?
+  [Unknown]:  mobile
+What is the name of your organization?
+  [Unknown]:  flattrade
+What is the name of your City or Locality?
+  [Unknown]:  chennai
+What is the name of your State or Province?
+  [Unknown]:  tamil nadu
+What is the two-letter country code for this unit?
+  [Unknown]:  india
+Is CN=flattrade, OU=mobile, O=flattrade, L=chennai, ST=tamil nadu, C=india correct?
+  [no]:  y
+
+Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+        for: CN=flattrade, OU=mobile, O=flattrade, L=chennai, ST=tamil nadu, C=india
+Enter key password for <upload>
+        (RETURN if same as keystore password):  
+Re-enter new password: 
+[Storing homedev-128flutterprojectnovoappupload-keystore.jks]
+
+Warning:
+The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -importkeystore -srckeystore homedev-128flutterprojectnovoappupload-keystore.jks -destkeystore homedev-128flutterprojectnovoappupload-keystore.jks -deststoretype pkcs12".
+
+
+
+flutter build appbundle --release
+
+flutter build apk --release
+
+//    andriod/app/build.gradle=>andriod{....}
+  signingConfigs {
+       release {
+       storeFile file('upload-keystore.jks')
+       storePassword 'novo@1234'
+       keyAlias 'upload'
+       keyPassword 'novo@1234'
+       }
+   }
+   
+//Change the debug to release
+
+   buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+        }
+    }
+
+
+
+
+
+Gnereate KeyStore key
+
+
+Mac keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+Windows keytool -list -v -keystore "\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+
+Linux keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+
+
+
+
+

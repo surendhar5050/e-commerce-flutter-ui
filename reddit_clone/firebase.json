@@ -1,0 +1,22 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "reddit-48f2d",
+                    "appId": "1:51335267399:android:69a05d7a9479e566981d62",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "reddit-48f2d",
+                    "configurations": {
+                        "android": "1:51335267399:android:69a05d7a9479e566981d62",
+                        "ios": "1:51335267399:ios:8b49f8c954a638dc981d62"
+                    }
+                }
+            }
+        }
+    }
+}

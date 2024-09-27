@@ -79,3 +79,21 @@ Linux keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugke
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
+
+
+
+Deploying to Google Play Store:
+
+Create a Google Play Developer account
+Create a signing key
+Configure your app
+Submit your app for review
+Publish your app
+Deploying to App Store:
+
+Create an Apple Developer account
+
+Create a signing certificate and provisioning profile
+Configure your app
+Submit your app for review
+Publish your app

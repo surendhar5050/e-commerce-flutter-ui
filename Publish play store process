@@ -1,0 +1,202 @@
+way to plublish in google play Store?
+
+
+1 :change App name ,Bundle id And App icon
+
+
+     ** change the App icon:  
+
+		using flutter_launcher_icons  package
+		
+		dev_dependencies:
+  			flutter_launcher_icons: "^0.14.1"
+
+		flutter_launcher_icons:
+			  image_path: "assets/icon/icon.png"
+			  android: true
+			  ios: true
+		
+		And run the command in terminal flutter run flutter_launcher_icons
+      
+      ** Change the app Name
+      
+      		go andriod manifest file find the android:label="App name" 
+	
+      ** change the bundle Id 
+
+		open the app level build.gradle  file  inside default config section change  applicationId = "com.example.reddit_cl" change to particular domain
+  
+ 
+2 sign the App
+
+		** create the keystore Key
+   
+		keytool -genkey -v -keystore android\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+			Enter keystore password:  
+			Re-enter new password: 
+			What is your first and last name?
+			  [Unknown]:  surendhar
+			What is the name of your organizational unit?
+			  [Unknown]:  surendhar
+			What is the name of your organization?
+			  [Unknown]:  surendhar org
+			What is the name of your City or Locality?
+			  [Unknown]:  chennai ennore
+			What is the name of your State or Province?
+			  [Unknown]:  Tamil Nadu
+			What is the two-letter country code for this unit?
+			  [Unknown]:  91
+			Is CN=surendhar, OU=surendhar, O=surendhar org, L=chennai ennore, ST=Tamil Nadu, C=91 correct?
+			  [no]:  y   
+
+			Generating 2,048 bit RSA key pair and self-signed certificate (SHA256withRSA) with a validity of 10,000 days
+				for: CN=surendhar, OU=surendhar, O=surendhar org, L=chennai ennore, ST=Tamil Nadu, C=91
+			Enter key password for <upload>
+				(RETURN if same as keystore password):  
+			Re-enter new password: 
+			They don't match. Try again
+			Enter key password for <upload>
+				(RETURN if same as keystore password):  
+			Re-enter new password: 
+			[Storing androidupload-keystore.jks]
+
+			Warning:
+			The JKS keystore uses a proprietary format. It is recommended to migrate to PKCS12 which is an industry standard format using "keytool -													importkeystore -srckeystore androidupload-keystore.jks -destkeystore androidupload-keystore.jks -deststoretype pkcs12".
+
+			
+			And upload-keystore.jks this file created in Andriod level
+
+			And create the key.properties  and add this lines to that file 
+
+					storePassword=<password-from-previous-step>
+					keyPassword=<password-from-previous-step>
+					keyAlias=upload
+					storeFile=<keystore-file-location>
+
+		
+
+			** configure siging in gradile
+
+
+ 						open the project]/android/app/build.gradle
+
+                                                And paste this line above andriod section
+ 	
+							def keystoreProperties = new Properties()
+							def keystorePropertiesFile = rootProject.file('key.properties')
+							if (keystorePropertiesFile.exists()) {
+							    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+							}
+ 						
+ 						And replace with buildTypes section the sign up configuration in andriod section 
+
+								
+							signingConfigs {
+								release {
+								    keyAlias = keystoreProperties['keyAlias']
+								    keyPassword = keystoreProperties['keyPassword']
+								    storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+								    storePassword = keystoreProperties['storePassword']
+								}
+							    }
+							    buildTypes {
+								release {
+								   
+								    signingConfig = signingConfigs.release
+								}
+							    }
+
+
+					flutter clean 
+                                        flutter pub get
+
+			** Get app Bundle release
+
+ 				  Run the command in teerminal  flutter build appbundle --release
+
+3 : publish app into google play store
+
+
+    ** go to create the App
+
+             complete the basic detials of the Application
+
+    ** go to store presence app
+
+            and click the main store listing   and fill the basic information of the application
+
+            and upload the app icon and App screen shots
+   
+   
+   ** go to store settings
+
+            1 click the edit 
+ 
+ 	     Manage the tags ( for user find the app in play store easily)
+
+           2  and edit store settings contact details
+
+
+   ** Go To release section
+
+
+            click the production tab 
+ 
+                   1 click the create new release 
+                           
+                           * tap on choose signing key and use the google genrated key
+
+
+                           * upload the aab file in field  
+
+                           * And click next i get few errors
+
+            Fixing the errors 
+
+                Go to App Content section
+                       
+                       
+                       * First we add privacy policy (create privacy policy and upload it  link https://termly.io/products/privacy-policy-generator/)  
+
+                       * create the host and publish the privacy policy
+
+                       * And Check the App is contian ads or not
+                      
+                       * And Check App Access (if app need any access we declare in that section)  
+
+                        * content rating
+                        
+                       * Target audience and content
+                       
+                       * News app
+                       
+                       * declartion and need Attention
+
+                       * Data safety
+ 
+                       * adversting id
+
+     		        * goverment app or goverment support app
+
+
+                        * Financial services
+
+
+           After fixing the bugs   go back  Production tab
+
+                   ** select the country and religions
+
+                    * go back to the  release and overview 
+
+                   * click button for review 
+
+
+
+                   All done Wait for it take two or three days
+
+                   
+                  
+   
+
+	
+		 

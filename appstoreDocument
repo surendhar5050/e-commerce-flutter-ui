@@ -1,0 +1,72 @@
+! Change the App icon and App Name
+        
+        
+        open flutter app in xcode and install pod 
+
+       ** App icon 
+              
+              Use the flutter_icon_packages with help of change app icon 
+
+       ** App Name 
+ 
+  	      To change App name go to desire directory
+
+              ios --> runner.workspace
+
+              Open runner folder and open the identity section in the general tab find the displayname and change the app name
+
+      ** optimize the app size
+
+
+
+
+check and configure the runner file before go to the testfilght and production
+
+
+          pub clean 
+
+          pub get
+
+
+2 Apple devloper account
+
+          create the apple devloper account 
+
+         And visit the appstoreconnect.com website login 
+
+         Go to the App section and create the new app    
+         
+                             if create new app ask some information :: 
+                             
+                                 1 os type
+
+                                 2 name
+                                  
+                                 3 primary language
+                                 
+                                 4 bundle id
+                                 
+                                 		if you bundle id first create the cerficate to app
+
+                                                         
+                                                         enter the description 
+
+                                                         enter bundle ip same as app id (com.example.com)
+                                 
+                                 5 sku (unique id)
+                                 
+                                 6 access 
+                                 
+                                 fill the all detials above section
+
+
+
+3 TestFlight 
+
+
+      Go inside the created app and go to test flight section   and fill 
+
+
+         
+
+              

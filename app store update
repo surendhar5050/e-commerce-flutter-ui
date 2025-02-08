@@ -69,7 +69,8 @@ class IosUpdate {
   void openAppStore() async {
     final String appId = "YOUR_APP_ID"; // Replace with your actual App Store ID
     final Uri appStoreUrl =
-        Uri.parse("https://apps.apple.com/in/app/firsthub/id6738045960");
+        Uri.parse("Appstore url
+");
 
     if (await canLaunchUrl(appStoreUrl)) {
       await launchUrl(appStoreUrl, mode: LaunchMode.externalApplication);
